@@ -889,7 +889,8 @@
     const months = Math.min(parseInt(monthsSlider.value) || 0, term);
     const workingDays = months * DAYS_PER_MONTH;
 
-    const maxPotential = DAILY_PER_USER * seats * DAYS_PER_YEAR;
+    // Total recoverable over the full contract term (scales with term)
+    const maxPotential = DAILY_PER_USER * seats * DAYS_PER_YEAR * (term / 12);
     const dailyAll = DAILY_PER_USER * users;
     const recoveredToDate = Math.min(dailyAll * workingDays, maxPotential);
     const roi = contract > 0 ? recoveredToDate / contract : 0;
