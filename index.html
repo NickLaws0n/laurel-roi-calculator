@@ -3,107 +3,88 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Laurel ROI Calculator</title>
+<title>Laurel ROI Calculator — Rebrand Preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #faf8f4;
-    --cream-dark: #edeae3;
-    --ink: #1a1a18;
-    --ink-soft: #2a2a26;
-    --ink-muted: #4a4a44;
-    --ink-faint: #6a6a62;
-    --green: #145a3d;
-    --green-light: #e8f3ed;
-    --copper: #b8845c;
-    --rule: #d4d0c8;
-    --rule-light: #e4e0d8;
+    --paper: #ffffff; --paper-soft: #fafafa;
+    --ink: #000000; --ink-soft: #1a1a1a; --ink-muted: #5b5b5b; --ink-faint: #a3a3a3;
+    --indigo: #1c0b7a; --indigo-deep: #120752; --indigo-tint: #ecebff;
+    --lavender: #c7befa; --lavender-soft: #eeebff;
+    --mustard: #f86a0c; --mustard-soft: #ffe7d3;
+    --rule: #e5e5e5; --rule-light: #f1f1f1;
+    --font-display: 'PP Feature Deck', 'Feature Deck Trial', 'Fraunces', 'Instrument Serif', Georgia, serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background: var(--cream);
-    color: var(--ink);
-    line-height: 1.65;
+    font-family: var(--font-body);
+    background: var(--paper); color: var(--ink);
+    font-size: 15px; line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 9999;
-    opacity: 0.025;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  h1, .control-num, .summary-num, .secondary-metric,
+  .comparison-title, .bar-amount, .footer-right,
+  .setup-strip-summary .firm,
+  .setup-field input, .setup-field .prefix, .setup-field .suffix {
+    font-variation-settings: "opsz" 96;
   }
+
+  /* Announcement */
+  .announce {
+    width: 100%; padding: 14px 24px; text-align: center;
+    background: var(--lavender); color: var(--ink);
+    font-size: 14px; font-weight: 500;
+  }
+  .announce strong { font-weight: 700; }
+  .announce a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
 
   .page {
     max-width: 1188px;
     margin: 0 auto;
-    padding: 64px 44px 80px;
+    padding: 56px 44px 80px;
   }
 
-  /* Masthead */
+  /* ─── Masthead ─── */
   .masthead { margin-bottom: 32px; }
   .masthead::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 1px;
-    background: var(--ink);
-    margin-top: 28px;
+    content: ''; display: block; width: 100%; height: 1px;
+    background: var(--ink); margin-top: 28px;
   }
   .masthead-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 20px;
-    gap: 24px;
-    flex-wrap: wrap;
+    display: flex; justify-content: space-between;
+    align-items: flex-end; margin-bottom: 20px;
+    gap: 24px; flex-wrap: wrap;
   }
   .masthead-brand {
-    font-family: 'Instrument Serif', serif;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--green);
+    font-family: var(--font-body);
+    font-size: 18px; font-weight: 700; letter-spacing: -0.01em;
+    color: var(--ink);
   }
   .masthead-meta {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--ink-muted);
-    letter-spacing: 0.04em;
-    text-align: right;
-    line-height: 1.8;
+    font-size: 13px; color: var(--ink-muted);
+    letter-spacing: 0.04em; text-align: right; line-height: 1.8;
   }
   .masthead h1 {
-    font-family: 'Instrument Serif', serif;
-    font-size: 52px;
-    font-weight: 400;
-    line-height: 1.08;
-    letter-spacing: -0.02em;
+    font-family: var(--font-display);
+    font-size: 56px; font-weight: 400; line-height: 1.08;
+    letter-spacing: -0.02em; color: var(--ink);
   }
-  .masthead h1 em {
-    font-style: italic;
-    color: var(--green);
-  }
+  .masthead h1 em { font-style: italic; color: var(--indigo); }
   .masthead-sub {
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--ink-muted);
-    margin-top: 10px;
+    font-size: 16px; color: var(--ink-muted);
+    margin-top: 10px; font-weight: 400;
   }
 
-  /* ─── Tier 1: Setup row ─── */
+  /* ─── Tier 1: Setup ─── */
   .setup {
-    background: var(--cream-dark);
+    background: var(--lavender-soft);
     border: 1px solid var(--rule);
+    border-radius: 8px;
     padding: 22px 28px;
     margin-bottom: 28px;
     transition: padding 0.15s;
@@ -114,404 +95,260 @@
   .setup.collapsed .setup-footer { display: none; }
   .setup:not(.collapsed) .setup-strip { display: none; }
   .setup-strip {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    flex-wrap: wrap;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap;
   }
   .setup-strip-summary {
-    font-size: 14px;
-    color: var(--ink-soft);
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
+    font-size: 14px; color: var(--ink-soft);
+    font-weight: 500; display: flex; align-items: center;
+    gap: 10px; flex-wrap: wrap;
   }
   .setup-strip-summary .firm {
-    font-family: 'Instrument Serif', serif;
-    font-size: 20px;
-    font-weight: 400;
-    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 22px; font-weight: 400; color: var(--ink);
   }
   .setup-strip-summary .sep { color: var(--ink-faint); }
   .setup-strip-summary .meta { color: var(--ink-muted); font-variant-numeric: tabular-nums; }
   .setup-edit {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    padding: 0;
-    color: var(--ink-faint);
-    background: transparent;
-    border: none;
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; padding: 0;
+    color: var(--ink-muted); background: transparent;
+    border: 1px solid var(--rule); border-radius: 8px;
     cursor: pointer;
-    border-radius: 4px;
-    transition: color 0.15s, background 0.15s;
+    transition: color 0.15s, background 0.15s, border-color 0.15s;
   }
   .setup-edit:hover {
-    color: var(--green);
-    background: var(--rule-light);
+    color: var(--indigo); background: var(--paper); border-color: var(--indigo);
   }
   .setup-edit svg { width: 14px; height: 14px; }
   .setup-footer {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 18px;
+    display: flex; justify-content: flex-end; margin-top: 18px;
   }
   .setup-done {
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--cream);
-    background: var(--green);
-    border: 1px solid var(--green);
-    padding: 8px 18px;
-    cursor: pointer;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: var(--font-body);
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--paper); background: var(--indigo);
+    border: 1px solid var(--indigo); border-radius: 8px;
+    padding: 10px 20px; cursor: pointer;
+    transition: background 0.15s;
   }
-  .setup-done:hover { opacity: 0.9; }
-
+  .setup-done:hover { background: var(--indigo-deep); }
   .setup-label {
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--green);
-    margin-bottom: 16px;
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--indigo); margin-bottom: 16px;
   }
   .setup-grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1.25fr 1fr;
-    gap: 20px;
-    align-items: end;
+    gap: 20px; align-items: end;
   }
-  @media (max-width: 820px) {
-    .setup-grid { grid-template-columns: 1fr 1fr; }
-  }
-  .setup-field {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
+  @media (max-width: 820px) { .setup-grid { grid-template-columns: 1fr 1fr; } }
+  .setup-field { display: flex; flex-direction: column; gap: 6px; }
   .setup-field label {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--ink-faint);
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--ink-muted);
   }
   .setup-field .input-shell {
-    display: flex;
-    align-items: baseline;
+    display: flex; align-items: baseline;
     border-bottom: 1.5px solid var(--ink);
-    padding: 4px 0 6px;
-    gap: 4px;
+    padding: 4px 0 6px; gap: 4px;
     transition: border-color 0.15s;
   }
-  .setup-field .input-shell:focus-within {
-    border-bottom-color: var(--green);
-  }
-  .setup-field .prefix,
-  .setup-field .suffix {
-    font-family: 'Instrument Serif', serif;
-    font-size: 22px;
-    font-weight: 400;
-    color: var(--ink-muted);
-    line-height: 1;
+  .setup-field .input-shell:focus-within { border-bottom-color: var(--indigo); }
+  .setup-field .prefix, .setup-field .suffix {
+    font-family: var(--font-display);
+    font-size: 22px; font-weight: 400; color: var(--ink-muted); line-height: 1;
   }
   .setup-field input {
     flex: 1;
-    font-family: 'Instrument Serif', serif;
-    font-size: 24px;
-    font-weight: 400;
-    color: var(--ink);
-    background: transparent;
-    border: none;
-    outline: none;
-    width: 100%;
-    padding: 0;
-    line-height: 1;
+    font-family: var(--font-display);
+    font-size: 24px; font-weight: 400;
+    color: var(--ink); background: transparent;
+    border: none; outline: none;
+    width: 100%; padding: 0; line-height: 1;
     font-variant-numeric: tabular-nums;
   }
-  .setup-field input::placeholder {
-    color: var(--ink-faint);
-    font-style: italic;
-  }
-  .setup-field input[type="text"] {
-    font-style: normal;
-  }
+  .setup-field input::placeholder { color: var(--ink-faint); font-style: italic; }
+  .setup-field input[type="text"] { font-style: normal; }
 
-  /* Two-column calculator */
+  /* ─── Calculator grid ─── */
   .calculator-grid {
-    display: grid;
-    grid-template-columns: 2fr 3fr;
-    border: 1px solid var(--rule);
-    align-items: stretch;
+    display: grid; grid-template-columns: 2fr 3fr;
+    border: 1px solid var(--rule); align-items: stretch;
+    background: var(--rule);
+    gap: 1px;
   }
-  .calc-left {
-    background: var(--cream);
-    padding: 36px 32px;
-    border-right: 1px solid var(--rule);
-    display: flex;
-    flex-direction: column;
-  }
-  .calc-right {
-    background: var(--green-light);
-    padding: 36px 32px;
-  }
+  .calc-left  { background: var(--paper);       padding: 36px 32px; display: flex; flex-direction: column; }
+  .calc-right { background: var(--indigo-tint); padding: 36px 32px; }
 
   .section-label {
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--green);
-    margin-bottom: 6px;
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.14em;
+    color: var(--indigo); margin-bottom: 8px;
   }
   .section-rule {
-    width: 36px;
-    height: 2px;
-    background: var(--green);
-    margin-bottom: 22px;
+    width: 48px; height: 2px; background: var(--indigo); margin-bottom: 22px;
   }
 
-  /* Input controls (sliders) */
-  .controls {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-  }
+  /* ─── Sliders ─── */
+  .controls { display: flex; flex-direction: column; gap: 28px; }
   .control label {
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
+    display: block; font-size: 11px; font-weight: 600;
     color: var(--ink-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-bottom: 6px;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 8px;
   }
-  .control-row {
-    display: flex;
-    align-items: baseline;
-    gap: 4px;
-    margin-bottom: 2px;
-  }
+  .control-row { display: flex; align-items: baseline; gap: 6px; margin-bottom: 2px; }
   .control-num {
-    font-family: 'Instrument Serif', serif;
-    font-size: 40px;
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 40px; font-weight: 400; line-height: 1;
+    letter-spacing: -0.02em; color: var(--ink);
   }
   .control-unit {
-    font-size: 18px;
-    font-weight: 500;
-    color: var(--ink-muted);
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 16px; font-weight: 500;
+    color: var(--ink-muted); font-family: var(--font-body);
   }
   .control-sub {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--ink-muted);
-    margin-bottom: 12px;
+    font-size: 13px; font-weight: 500;
+    color: var(--ink-muted); margin-bottom: 14px;
   }
 
   .slider-wrap {
-    position: relative;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    width: 80%;
+    position: relative; height: 24px;
+    display: flex; align-items: center; width: 100%;
   }
   input[type="range"] {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 100%;
-    height: 24px;
-    background: transparent;
-    outline: none;
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 2;
-    margin: 0;
+    -webkit-appearance: none; appearance: none;
+    width: 100%; height: 24px;
+    background: transparent; outline: none; cursor: pointer;
+    position: absolute; top: 0; left: 0; z-index: 2; margin: 0;
   }
   .slider-track {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 5px;
-    transform: translateY(-50%);
+    position: absolute; top: 50%; left: 0; right: 0;
+    height: 6px; transform: translateY(-50%);
     background: var(--rule);
   }
   .slider-fill {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    height: 5px;
-    transform: translateY(-50%);
-    background: var(--green);
-    z-index: 1;
+    position: absolute; top: 50%; left: 0;
+    height: 6px; transform: translateY(-50%);
+    background: var(--indigo); z-index: 1;
     transition: width 0.1s ease;
   }
   input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    width: 24px;
-    height: 24px;
+    -webkit-appearance: none; width: 18px; height: 18px;
     border-radius: 50%;
-    background: var(--green);
-    border: 3px solid var(--cream);
-    box-shadow: 0 0 0 1.5px var(--green), 0 2px 6px rgba(0,0,0,0.12);
+    background: var(--indigo);
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 1.5px var(--indigo);
     cursor: pointer;
     transition: transform 0.15s ease;
   }
-  input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.1); }
+  input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
   input[type="range"]::-moz-range-thumb {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--green);
-    border: 3px solid var(--cream);
-    box-shadow: 0 0 0 1.5px var(--green), 0 2px 6px rgba(0,0,0,0.12);
+    width: 18px; height: 18px; border-radius: 50%;
+    background: var(--indigo);
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 1.5px var(--indigo);
     cursor: pointer;
   }
   .slider-labels {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 8px;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--ink-faint);
-    width: 80%;
+    display: flex; justify-content: space-between;
+    margin-top: 10px; font-size: 12px;
+    font-weight: 500; color: var(--ink-faint); width: 100%;
   }
 
-  /* Assumptions ledger */
+  /* ─── Assumptions ledger ─── */
   .assumptions {
-    margin-top: 48px;
-    padding-top: 24px;
+    margin-top: 48px; padding-top: 24px;
     border-top: 1px solid var(--rule);
   }
   .assumptions-title {
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--ink-faint);
-    margin-bottom: 14px;
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--ink-muted); margin-bottom: 14px;
   }
   .ledger {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 12px 20px;
-    font-size: 15px;
-    line-height: 2.2;
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 10px 20px; font-size: 14px; line-height: 1.8;
   }
-  .ledger-label {
-    color: var(--ink-soft);
-    font-weight: 500;
-  }
+  .ledger-label { color: var(--ink-soft); font-weight: 500; }
   .ledger-value {
-    text-align: right;
-    font-weight: 700;
-    color: var(--ink-soft);
-    font-variant-numeric: tabular-nums;
-    font-size: 16px;
+    text-align: right; font-weight: 600; color: var(--ink);
+    font-variant-numeric: tabular-nums; font-size: 14px;
   }
 
-  /* Summary bar */
+  /* ─── Summary bar ─── */
   .summary-bar {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 1px;
-    background: var(--rule);
-    border: 1px solid var(--rule);
-    margin-bottom: 24px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 1px; background: var(--rule);
+    border: 1px solid var(--rule); margin-bottom: 24px;
   }
   .summary-cell {
-    background: var(--green-light);
-    padding: 20px 16px;
-    text-align: center;
+    background: var(--paper);
+    padding: 22px 18px; text-align: center;
   }
   .summary-num {
-    font-family: 'Instrument Serif', serif;
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 1;
-    letter-spacing: -0.02em;
-    color: var(--green);
+    font-family: var(--font-display);
+    font-size: 34px; font-weight: 400; line-height: 1;
+    letter-spacing: -0.02em; color: var(--indigo);
     transition: all 0.3s ease;
   }
   .summary-num.dark { color: var(--ink); }
   .summary-label {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--ink-soft);
-    margin-top: 10px;
-    letter-spacing: 0.02em;
+    font-size: 12px; font-weight: 500;
+    color: var(--ink-muted); margin-top: 10px;
+    text-transform: uppercase; letter-spacing: 0.06em;
     line-height: 1.35;
   }
 
   @keyframes valuePulse {
-    0% { opacity: 1; }
-    30% { opacity: 0.5; }
-    100% { opacity: 1; }
+    0% { opacity: 1; } 30% { opacity: 0.5; } 100% { opacity: 1; }
   }
-  .summary-num.updating,
-  .secondary-metric.updating { animation: valuePulse 0.35s ease; }
+  .summary-num.updating, .secondary-metric.updating {
+    animation: valuePulse 0.35s ease;
+  }
 
-  /* Insight */
+  /* ─── Insight ─── */
   .insight {
-    border-left: 3px solid var(--green);
-    padding: 20px 24px;
-    background: var(--cream-dark);
+    border-left: 3px solid var(--indigo);
+    padding: 18px 22px;
+    background: var(--paper);
+    border-top: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
     margin-bottom: 28px;
   }
   .insight p {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--ink);
-    line-height: 1.9;
+    font-size: 14px; font-weight: 500;
+    color: var(--ink); line-height: 1.7;
   }
-  .insight strong { color: var(--green); font-weight: 700; }
+  .insight strong { color: var(--indigo); font-weight: 700; }
 
-  /* Comparison bars */
+  /* ─── Comparison bars ─── */
   .comparison { margin-bottom: 28px; }
   .comparison-title {
-    font-family: 'Instrument Serif', serif;
-    font-size: 22px;
-    font-weight: 400;
-    margin-bottom: 18px;
-    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 22px; font-weight: 400;
+    margin-bottom: 18px; color: var(--ink);
   }
-  .bar-row { margin-bottom: 16px; }
+  .bar-row { margin-bottom: 14px; }
   .bar-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 5px;
+    display: flex; justify-content: space-between;
+    align-items: baseline; margin-bottom: 5px;
   }
   .bar-label {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--ink-soft);
+    font-size: 13px; font-weight: 600; color: var(--ink-soft);
   }
   .bar-amount {
-    font-family: 'Instrument Serif', serif;
-    font-size: 16px;
-    font-weight: 400;
-    color: var(--ink-soft);
-    font-variant-numeric: tabular-nums;
+    font-family: var(--font-display);
+    font-size: 16px; font-weight: 400;
+    color: var(--ink-soft); font-variant-numeric: tabular-nums;
   }
   .bar-track {
-    height: 24px;
-    background: var(--rule-light);
+    height: 22px; background: var(--rule-light);
     position: relative;
   }
   .bar-fill {
@@ -519,109 +356,88 @@
     transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     min-width: 2px;
   }
-  .bar-fill.contract { background: var(--ink-faint); }
-  .bar-fill.recovered { background: var(--green); }
-  .bar-fill.potential { background: var(--copper); opacity: 0.7; }
+  .bar-fill.contract  { background: var(--ink-muted); }
+  .bar-fill.recovered { background: var(--indigo); }
+  .bar-fill.potential { background: var(--mustard); opacity: 0.85; }
 
-  /* Copy link button */
+  /* ─── Copy link button (ghost) ─── */
   .copy-link-row {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
+    display: flex; justify-content: flex-end; margin-top: 20px;
   }
   .copy-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--green);
-    background: transparent;
-    border: 1px solid var(--green);
-    padding: 10px 16px;
-    cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-body);
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--indigo); background: var(--paper);
+    border: 1px solid var(--indigo); border-radius: 8px;
+    padding: 10px 18px; cursor: pointer;
     transition: background 0.15s, color 0.15s;
   }
-  .copy-link:hover { background: var(--green); color: var(--cream); }
-  .copy-link.copied { background: var(--green); color: var(--cream); }
+  .copy-link:hover { background: var(--indigo); color: var(--paper); }
+  .copy-link.copied { background: var(--indigo); color: var(--paper); }
   .copy-link svg { width: 14px; height: 14px; }
 
-  /* Secondary metrics */
+  /* ─── Secondary row ─── */
   .secondary-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-    padding: 20px 0;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 24px; padding: 20px 0;
     border-top: 1px solid var(--rule);
     border-bottom: 1px solid var(--rule);
   }
   .secondary-metric {
-    font-family: 'Instrument Serif', serif;
-    font-size: 24px;
-    font-weight: 400;
-    color: var(--ink-soft);
-    line-height: 1;
+    font-family: var(--font-display);
+    font-size: 24px; font-weight: 400;
+    color: var(--ink); line-height: 1;
   }
   .secondary-label {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--ink-soft);
-    margin-top: 8px;
+    font-size: 12px; font-weight: 500;
+    color: var(--ink-muted); margin-top: 8px;
+    text-transform: uppercase; letter-spacing: 0.06em;
   }
 
-  /* Footer */
+  /* ─── Footer ─── */
   .footer {
-    margin-top: 48px;
-    padding-top: 20px;
+    margin-top: 48px; padding-top: 20px;
     border-top: 1px solid var(--ink);
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--ink-muted);
-    gap: 24px;
-    flex-wrap: wrap;
+    display: flex; justify-content: space-between;
+    font-size: 13px; font-weight: 500;
+    color: var(--ink-muted); gap: 24px; flex-wrap: wrap;
   }
   .footer strong { color: var(--ink); font-weight: 600; }
   .footer-right {
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
-    font-size: 15px;
-    color: var(--ink-soft);
+    font-family: var(--font-display); font-style: italic;
+    font-size: 15px; color: var(--ink-soft);
   }
-  .footer a { color: var(--green); text-decoration: none; }
+  .footer a { color: var(--indigo); text-decoration: none; }
   .footer a:hover { text-decoration: underline; }
 
   @media (max-width: 768px) {
     .page { padding: 24px 20px 40px; }
     .masthead h1 { font-size: 36px; }
     .calculator-grid { grid-template-columns: 1fr; }
-    .calc-left { border-right: none; border-bottom: 1px solid var(--rule); }
     .summary-bar { grid-template-columns: 1fr; }
-    .slider-wrap, .slider-labels { width: 100%; }
   }
 
   @media print {
-    body::before { display: none; }
+    .announce { display: none; }
   }
 </style>
 </head>
 <body>
+
 <div class="page">
 
   <header class="masthead">
     <div class="masthead-top">
-      <div class="masthead-brand">Laurel ROI Calculator</div>
+      <div class="masthead-brand">laurel</div>
       <div class="masthead-meta" id="masthead-meta">
-        — seats &middot; — contract<br>
-        — term &middot; April 2026
+        — seats · — contract<br>
+        — term · April 2026
       </div>
     </div>
     <h1><span id="title-firm">Your firm</span> <em>ROI</em></h1>
-    <p class="masthead-sub">Model the revenue impact of Laurel adoption at any point in the contract</p>
+    <p class="masthead-sub">Model the revenue impact of Laurel adoption at any point in the contract.</p>
   </header>
 
   <!-- TIER 1: Firm setup -->
@@ -679,7 +495,7 @@
 
       <div class="controls">
         <div class="control">
-          <label>Active Users</label>
+          <label>Active users</label>
           <div class="control-row">
             <span class="control-num" id="users-display">0</span>
             <span class="control-unit" id="users-unit">/ 0</span>
@@ -693,7 +509,7 @@
           <div class="slider-labels" id="users-labels"><span>0</span><span>750</span><span>1,500</span></div>
         </div>
         <div class="control">
-          <label>Months Into Contract</label>
+          <label>Months into contract</label>
           <div class="control-row">
             <span class="control-num" id="months-display">6</span>
             <span class="control-unit" id="months-unit">of 12</span>
@@ -708,7 +524,6 @@
         </div>
       </div>
 
-      <!-- Tier 3: Assumptions (static for now — editable in a later pass) -->
       <div class="assumptions">
         <div class="assumptions-title">Assumptions</div>
         <div class="ledger">
@@ -726,21 +541,21 @@
 
     <!-- RIGHT: Results -->
     <div class="calc-right">
-      <div class="section-label">Value Realized To Date</div>
+      <div class="section-label">Value realized to date</div>
       <div class="section-rule"></div>
 
       <div class="summary-bar">
         <div class="summary-cell">
           <div class="summary-num" id="out-recovered">$0</div>
-          <div class="summary-label">Revenue Recovered</div>
+          <div class="summary-label">Revenue recovered</div>
         </div>
         <div class="summary-cell">
           <div class="summary-num" id="out-roi">0x</div>
-          <div class="summary-label">ROI on Contract</div>
+          <div class="summary-label">ROI on contract</div>
         </div>
         <div class="summary-cell">
           <div class="summary-num dark" id="out-payback">—</div>
-          <div class="summary-label">Payback Per User</div>
+          <div class="summary-label">Payback per user</div>
         </div>
       </div>
 
@@ -749,10 +564,10 @@
       </div>
 
       <div class="comparison">
-        <div class="comparison-title">Value vs. Investment</div>
+        <div class="comparison-title">Value vs. investment</div>
         <div class="bar-row">
           <div class="bar-top">
-            <div class="bar-label">Contract Cost</div>
+            <div class="bar-label">Contract cost</div>
             <div class="bar-amount" id="bar-contract-label">$0</div>
           </div>
           <div class="bar-track"><div class="bar-fill contract" id="bar-contract"></div></div>
@@ -766,7 +581,7 @@
         </div>
         <div class="bar-row">
           <div class="bar-top">
-            <div class="bar-label">Total Recoverable Revenue</div>
+            <div class="bar-label">Total recoverable revenue</div>
             <div class="bar-amount" id="bar-potential-label">$0</div>
           </div>
           <div class="bar-track"><div class="bar-fill potential" id="bar-potential" style="width:100%"></div></div>
@@ -797,7 +612,7 @@
   <footer class="footer">
     <div>
       <strong>Built by</strong> &ensp;<a href="https://github.com/NickLaws0n" target="_blank" rel="noopener">Nick Lawson</a>
-      &middot; <a href="https://github.com/NickLaws0n/laurel-roi-calculator" target="_blank" rel="noopener">Source on GitHub</a>
+      · <a href="https://github.com/NickLaws0n/laurel-roi-calculator" target="_blank" rel="noopener">Source on GitHub</a>
     </div>
     <div class="footer-right">Shared with the Laurel team</div>
   </footer>
@@ -805,7 +620,7 @@
 </div>
 
 <script>
-  // Assumptions (Tier 3 — static for now)
+  // ─── Constants (static Tier-3 assumptions) ───
   const HOURLY_RATE = 350;
   const HOURS_PER_DAY = 0.4;
   const DAYS_PER_MONTH = 21;
@@ -814,13 +629,11 @@
 
   const $ = (id) => document.getElementById(id);
 
-  // Tier 1 setup inputs
   const firmInput = $('firm');
   const seatsInput = $('seats');
   const contractInput = $('contract');
   const termInput = $('term');
 
-  // Tier 2 sliders
   const usersSlider = $('users');
   const monthsSlider = $('months');
   const usersFill = $('users-fill');
@@ -834,10 +647,7 @@
     if (n >= 1_000) return '$' + (n / 1000).toFixed(1) + 'K';
     return '$' + Math.round(n).toLocaleString('en-US');
   }
-
-  function formatInt(n) {
-    return Math.round(n).toLocaleString('en-US');
-  }
+  function formatInt(n) { return Math.round(n).toLocaleString('en-US'); }
 
   function updateSliderFill(slider, fill) {
     const min = parseFloat(slider.min);
@@ -855,22 +665,18 @@
     });
   }
 
-  // When Tier 1 inputs change: resize sliders, update labels, recompute
   function applySetup() {
     const seats = Math.max(1, parseInt(seatsInput.value) || 0);
     const term = Math.max(1, parseInt(termInput.value) || 0);
 
-    // Resize users slider
     const step = seats <= 100 ? 1 : seats <= 500 ? 5 : 25;
     usersSlider.max = seats;
     usersSlider.step = step;
     if (parseInt(usersSlider.value) > seats) usersSlider.value = seats;
 
-    // Resize months slider
     monthsSlider.max = term;
     if (parseInt(monthsSlider.value) > term) monthsSlider.value = term;
 
-    // Update slider-label endpoints
     $('users-labels').innerHTML = `<span>0</span><span>${formatInt(Math.round(seats/2))}</span><span>${formatInt(seats)}</span>`;
     $('months-labels').innerHTML = `<span>1</span><span>${Math.max(1, Math.round(term/2))}</span><span>${term}</span>`;
     $('users-unit').textContent = '/ ' + formatInt(seats);
@@ -889,7 +695,6 @@
     const months = Math.min(parseInt(monthsSlider.value) || 0, term);
     const workingDays = months * DAYS_PER_MONTH;
 
-    // Total recoverable over the full contract term (scales with term)
     const maxPotential = DAILY_PER_USER * seats * DAYS_PER_YEAR * (term / 12);
     const dailyAll = DAILY_PER_USER * users;
     const recoveredToDate = Math.min(dailyAll * workingDays, maxPotential);
@@ -898,13 +703,11 @@
     const payback = users > 0 && DAILY_PER_USER > 0 ? costPerSeat / DAILY_PER_USER : 0;
     const annualRunRate = dailyAll * DAYS_PER_YEAR;
 
-    // Masthead
     $('title-firm').textContent = firmName || 'Your firm';
     $('masthead-meta').innerHTML =
-      `${formatInt(seats)} seats &middot; ${formatDollars(contract)} contract<br>` +
-      `${term}-month term &middot; April 2026`;
+      `${formatInt(seats)} seats · ${formatDollars(contract)} contract<br>` +
+      `${term}-month term · April 2026`;
 
-    // Slider fills + labels
     updateSliderFill(usersSlider, usersFill);
     updateSliderFill(monthsSlider, monthsFill);
     $('users-display').textContent = formatInt(users);
@@ -912,7 +715,6 @@
     $('months-display').textContent = months;
     $('months-remaining').textContent = (term - months) + ' months remaining';
 
-    // Primary metrics
     $('out-recovered').textContent = formatDollars(recoveredToDate);
     $('out-roi').textContent = roi.toFixed(1) + 'x';
     $('out-payback').textContent = users > 0 && payback > 0 ? payback.toFixed(1) + ' days' : '—';
@@ -921,7 +723,6 @@
 
     pulseMetrics();
 
-    // Value vs investment bars
     const contractPct = maxPotential > 0 ? (contract / maxPotential) * 100 : 0;
     const recoveredPct = maxPotential > 0 ? (recoveredToDate / maxPotential) * 100 : 0;
     $('bar-contract').style.width = Math.max(contractPct, 0.5) + '%';
@@ -930,7 +731,6 @@
     $('bar-recovered-label').textContent = formatDollars(recoveredToDate);
     $('bar-potential-label').textContent = formatDollars(maxPotential);
 
-    // Insight narrative (firm-name aware)
     const whoPhrase = firmName || 'the firm';
     let insight = '';
     if (users === 0) {
@@ -960,7 +760,6 @@
     if (p.has('months')) monthsSlider.value = p.get('months');
     return p.toString().length > 0;
   }
-
   function buildShareUrl() {
     const p = new URLSearchParams();
     if (firmInput.value.trim()) p.set('firm', firmInput.value.trim());
@@ -975,9 +774,7 @@
 
   // ─── Setup toggle ───
   const setupEl = $('setup');
-  function setSetupCollapsed(collapsed) {
-    setupEl.classList.toggle('collapsed', collapsed);
-  }
+  function setSetupCollapsed(collapsed) { setupEl.classList.toggle('collapsed', collapsed); }
   $('setup-edit').addEventListener('click', () => setSetupCollapsed(false));
   $('setup-done').addEventListener('click', () => setSetupCollapsed(true));
 
@@ -997,16 +794,11 @@
   let copyTimer;
   copyBtn.addEventListener('click', async () => {
     const url = buildShareUrl();
-    try {
-      await navigator.clipboard.writeText(url);
-    } catch (e) {
-      // Fallback
+    try { await navigator.clipboard.writeText(url); }
+    catch (e) {
       const ta = document.createElement('textarea');
-      ta.value = url;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand('copy');
-      document.body.removeChild(ta);
+      ta.value = url; document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); document.body.removeChild(ta);
     }
     copyBtn.classList.add('copied');
     copyText.textContent = 'Link copied';
@@ -1017,7 +809,6 @@
     }, 2000);
   });
 
-  // Wire events
   [firmInput, seatsInput, contractInput, termInput].forEach(el => {
     el.addEventListener('input', () => { applySetup(); updateStrip(); });
   });
@@ -1025,7 +816,6 @@
     el.addEventListener('input', update);
   });
 
-  // Initial load: read URL, collapse setup if params present
   const hadParams = readUrl();
   applySetup();
   updateStrip();
